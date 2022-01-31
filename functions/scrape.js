@@ -49,6 +49,7 @@ module.exports = async function scrape({ page, context }) {
     elements,
     userAgent = null,
     waitFor,
+    viewport = null,
     debug = {
       cookies: false,
       html: false,
@@ -120,6 +121,9 @@ module.exports = async function scrape({ page, context }) {
 
   if (userAgent) {
     await page.setUserAgent(userAgent);
+  }
+  if (viewport) {
+    await page.setViewport(viewport);
   }
 
   const response = await page.goto(url, gotoOptions);
@@ -195,7 +199,7 @@ module.exports = async function scrape({ page, context }) {
       ? page.screenshot({
           fullPage: true,
           type: 'jpeg',
-          quality: 20,
+          quality: 100,
           encoding: 'base64',
         })
       : Promise.resolve(null),

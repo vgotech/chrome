@@ -260,6 +260,7 @@ export const scrape = Joi.object().keys({
   rejectResourceTypes,
   requestInterceptors,
   setExtraHTTPHeaders,
+  viewport,
   url: Joi.string().required(),
   userAgent,
   waitFor,
